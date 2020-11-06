@@ -12,4 +12,7 @@
     * Unserialize
 * [ADWorld](adworld.md)
 * BUUCTF
+* [其他比赛](qi-ta-bi-sai.md)
+  * TSCTF-J
+  * Hackergame 2020
 

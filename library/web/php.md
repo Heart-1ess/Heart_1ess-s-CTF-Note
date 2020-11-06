@@ -12,5 +12,12 @@ X-Forward-For / Referer 伪造 --&gt; X-Forward-For 为最初发起请求的客�
 
 php弱类型对比（==），不涉及数据转换 --&gt; 0e123==0e456 （典型：md5碰撞）
 
+HTML注入：
+
+```
+127.0.0.1;var_dump(scandir('/'));
+127.0.0.1;file_get_contents(filename);
+```
+
 
 
