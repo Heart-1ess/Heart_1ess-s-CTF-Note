@@ -8,7 +8,7 @@
     * [Upload](library/web/wen-jian-shang-chuan.md)
     * [SQL](library/web/sql.md)
     * [XSS](library/web/xss.md)
-    * CSRF
+    * [CSRF](library/web/csrf.md)
     * [Unserialize](library/web/unserialize.md)
 * [ADWorld](adworld.md)
 * BUUCTF
