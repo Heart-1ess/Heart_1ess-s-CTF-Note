@@ -14,5 +14,5 @@
 * BUUCTF
 * [其他比赛](qi-ta-bi-sai.md)
   * [TSCTF-J](qi-ta-bi-sai/tsctf-j.md)
-  * Hackergame 2020
+  * [Hackergame 2020](qi-ta-bi-sai/hackergame-2020.md)
 
