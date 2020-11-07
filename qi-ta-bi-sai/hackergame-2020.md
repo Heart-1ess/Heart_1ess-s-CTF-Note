@@ -14,7 +14,11 @@ eyJ[A-Za-z0-9_-]*\.[A-Za-z0-9._-]*
 eyJ[A-Za-z0-9_\/+-]*\.[A-Za-z0-9._\/+-]*
 ```
 
-得到结果发现jwt版本存在漏洞![](/assets/hkg2.png)抓包token在 [https://jwt.io/](https://jwt.io/上分析)
+得到结果发现jwt版本存在漏洞![](/assets/hkg2.png)抓包token在 [https://jwt.io/](https://jwt.io/) 上分析，发现加密方法为RS256，尝试采用HS256的欺骗攻击
+
+首先需要取得公钥
+
+用dirsearch进行站点扫描，发现debug、docs和static三个网址
 
 ![](/assets/hkg1.png)
 
