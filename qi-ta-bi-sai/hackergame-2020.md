@@ -92,5 +92,5 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYwNDc2MTg5Nn0
 signature
 ```
 
-抓包更改jwt，欺骗成功获取flag
+抓包更改jwt，欺骗成功获取flag![](/assets/hkg3.png)
 
