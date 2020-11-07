@@ -122,8 +122,6 @@ Payload：
 
 ![](/assets/import11.png)
 
-
-
 ### 0x02 EzUpload
 
 传一个一句话上去，发现过滤.php类型的文件，老规矩传一个jpg上去发现成功了
@@ -185,4 +183,60 @@ var_dump(scandir('/'));
 然后将`var_dump(scandir(‘/’)`换成`get_file_contents(‘/flag.txt’)`就可以获取flag了
 
 ![](/assets/import18.png)
+
+
+
+### 0x03 rcmd
+
+先进行代码审计
+
+![](/assets/import19.png)
+
+大致流程为输入一个url然后该网站与url产生连接，传输数据后关闭连接
+
+想让它向本机传输数据，但是url过滤`127.0.0.1`和`localhost`，所以采用进制绕过
+
+![](/assets/import20.png)
+
+由于连接之后只会发送the content is 和一个整形，我们用`%1$s`覆盖`start`的值让页面输出字符型内容
+
+扫描端口发现开放端口并在5000端口检测到回显有一段文字提示
+
+最终payload: 
+
+```
+http://api.yoshino-s.online:11455/?url=http://2130706433:5000&start=%1$s
+```
+
+![](/assets/import21.png)
+
+进入`/query?=path/fl4g/flag`下查找
+
+![](/assets/import22.png)
+
+发现文件过滤
+
+进入根目录下查找，发现`/app`目录下有三个文件`main.py`，`file.py`和`readfile.py`
+
+main.py:
+
+```
+import os
+import os.path
+
+class File:
+    "The file class"
+    def __init__(self, path):
+        self.path = path
+        self.name = os.path.basename(self.path)
+        self.dir = os.path.dirname(self.path)
+        def listDir(self):
+            return os.listdir(os.path.dirname(self.dir))
+```
+
+
+
+
+
+
 
