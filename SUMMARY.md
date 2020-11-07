@@ -13,6 +13,6 @@
 * [ADWorld](adworld.md)
 * BUUCTF
 * [其他比赛](qi-ta-bi-sai.md)
-  * TSCTF-J
+  * [TSCTF-J](qi-ta-bi-sai/tsctf-j.md)
   * Hackergame 2020
 
