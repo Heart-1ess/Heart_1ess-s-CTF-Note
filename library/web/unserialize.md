@@ -6,7 +6,7 @@ protected op --&gt; \00\*\00op
 
 class Name{
 
-private op --&gt;; \00Name\00op
+private op --&gt; \00Name\00op
 
 * ### \_\_wakeup 魔术方法绕过
 
