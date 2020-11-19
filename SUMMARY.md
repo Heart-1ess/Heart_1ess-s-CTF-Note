@@ -10,6 +10,7 @@
     * [XSS](library/web/xss.md)
     * [CSRF](library/web/csrf.md)
     * [Unserialize](library/web/unserialize.md)
+    * [Java](library/web/java.md)
 * [ADWorld](adworld.md)
 * [BUUCTF](buuctf.md)
   * [网鼎杯2018](buuctf/wang-ding-bei-2018.md)
