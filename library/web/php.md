@@ -54,21 +54,6 @@ echo Y2F0IC9mbGFn|base64 -d|bash
 
 过滤斜杠 --&gt;利用环境变量进行字符串截取
 
-过滤select--&gt;采用handler进行注入
-
-```
-HANDLER tbl_name OPEN [ [AS] alias]
-
-HANDLER tbl_name READ index_name { = | <= | >= | < | > } (value1,value2,...)
-    [ WHERE where_condition ] [LIMIT ... ]
-HANDLER tbl_name READ index_name { FIRST | NEXT | PREV | LAST }
-    [ WHERE where_condition ] [LIMIT ... ]
-HANDLER tbl_name READ { FIRST | NEXT }
-    [ WHERE where_condition ] [LIMIT ... ]
-
-HANDLER tbl_name CLOSE 
-```
-
 利用单引号绕过
 
 拼接：
