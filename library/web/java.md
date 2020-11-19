@@ -47,5 +47,7 @@ WebContent                          (站点根目录)
   </servlet>
 ```
 
+直接访问失败后可以将GET请求换为POST请求尝试
+
 
 
