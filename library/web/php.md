@@ -107,7 +107,7 @@ def url_explosion(url, path, command):   #确定有效的php文件
 
     except:
         print("\n" + url,"异常")
-   
+
 def find_params(url, params, data):   #确定最终的有效参数
     try:
         for pa in params.keys():
@@ -116,7 +116,7 @@ def find_params(url, params, data):   #确定最终的有效参数
             if r.text.find("haha") != -1 :
                 print(pa)
                 os.system("pause")
-                
+
     except:
         print("error!\n")
     try:
@@ -136,7 +136,7 @@ for i in range(0, len(list)):
     path = os.path.join(rootdir ,list[i])
     name = list[i].split('-2')[0]   #获取文件名
     url = "http://1e688c83-cf4c-4675-b569-6e227ff69914.node3.buuoj.cn/" + name
-    url_explosion(url,path,"echo haha")  
+    url_explosion(url,path,"echo haha")
 ```
 
 
