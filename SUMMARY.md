@@ -14,6 +14,7 @@
 * [ADWorld](adworld.md)
 * [BUUCTF](buuctf.md)
   * [网鼎杯2018](buuctf/wang-ding-bei-2018.md)
+  * [BUUCTF 2018](buuctf/buuctf-2018.md)
 * [其他比赛](qi-ta-bi-sai.md)
   * [TSCTF-J](qi-ta-bi-sai/tsctf-j.md)
   * [Hackergame 2020](qi-ta-bi-sai/hackergame-2020.md)
