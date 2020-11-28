@@ -38,7 +38,26 @@ if(isset($_GET['exp'])){
 知识点：
 
 ```
+scandir(’.’):扫描当前目录
+localeconv() 函数返回一包含本地数字及货币格式信息的数组。而数组第一项就是.
+pos(),current():返回数组第一个值
 
+//数组操作函数：
+1.end():数组指针指向最后一位
+2.next(): 数组指针指向下一位
+3.array_reverse(): 将数组颠倒
+4.array_rand(): 随机返回数组的键名
+5.array_flip()：交换数组的键和值
+
+//读取文件函数
+1.file_get_content() :因为et被ban，所以不能使用
+2.readfile()
+3.highlight_file()
+4.show_source()
+
+session_start(): 告诉PHP使用session;
+session_id(): 获取到当前的session_id值；
+手动设置cookie中PHPSESSID=flag.php；
 ```
 
 
