@@ -30,6 +30,8 @@ Information_schema.tables //存储了数据库中所有的表信息
 Information_schema.columns where table_name = ‘a’  //存储了数据库内部表a中所有的字段信息
 ```
 
+如果出现illigal mix of 'UNION', 尝试使用hex获取16进制输出
+
 * ### 盲注
 
 盲注脚本（二分搜索）
