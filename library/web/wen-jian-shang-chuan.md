@@ -55,6 +55,12 @@ asp木马
 Auto_prepend_file=2.jpg
 ```
 
+.htaccess强制用php进行解析
+
+```
+SetHandler application/x-httpd-php
+```
+
 Apache的解析机制绕过
 
 APACHE默认文件名中可以带.号，当解析文件遇到.号时，从右至左依次解析。比如：test.php.xxx.aaa，.xxx和.aaa这两种后缀是apache不可识别解析,apache就会把test.php.xxx.aaa解析成test.php
