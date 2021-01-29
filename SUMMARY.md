@@ -17,6 +17,7 @@
   * [BUUCTF 2018](buuctf/buuctf-2018.md)
   * [GXYCTF 2019](buuctf/gxyctf2019.md)
   * [安洵杯 2019](buuctf/an-xun-bei-2019.md)
+  * [BJDCTF 2020](buuctf/bjdctf-2020.md)
 * [其他比赛](qi-ta-bi-sai.md)
   * [TSCTF-J](qi-ta-bi-sai/tsctf-j.md)
   * [Hackergame 2020](qi-ta-bi-sai/hackergame-2020.md)
