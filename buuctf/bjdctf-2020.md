@@ -16,7 +16,9 @@
 
 1、若返回yds，让yds=flag只需通过GET方法传入yds=flag的语句即可进入第二条件，输出yds得到flag
 
-2、若返回is则让is=flag并且flag=flag，如此可进入第三条件，输出is得到flag
+2、若返回is则用GET方法传入is=flag并且flag=flag，如此可进入第三条件，输出is得到flag
 
 值得注意的是，由于第二条件和第三条件同时不满足的情况下flag会被修改，导致最后绕过判断后无法输出正确的flag，从而第三思路不可行
+
+最终采用GET方法传入得到flag
 
