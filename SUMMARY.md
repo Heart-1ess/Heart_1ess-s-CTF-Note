@@ -4,7 +4,6 @@
 * [Library](library.md)
   * [Web](library/web.md)
     * [PHP](library/web/php.md)
-    * [SSTI](library/web/ssti.md)
     * [SQL](library/web/sql.md)
     * [Upload](library/web/wen-jian-shang-chuan.md)
     * [XSS](library/web/xss.md)
