@@ -1,6 +1,8 @@
 ## 0x01 禁止套娃
 
-用dirsearch扫描发现是git泄露，采用GitHack下载泄露的Git发现是index.php![](/assets/GXY1.png)打开Index.php进行源码审计，发现过滤：
+关键词：Git泄露，文件读取
+
+用dirsearch扫描发现是git泄露，采用GitHack下载泄露的Git发现是index.php![](C:\Gitbook\Import\heart1ess_s_ctf\assets\GXY1.png)打开Index.php进行源码审计，发现过滤：
 
 ```
 <?php

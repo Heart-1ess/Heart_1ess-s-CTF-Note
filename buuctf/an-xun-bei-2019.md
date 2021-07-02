@@ -1,10 +1,12 @@
 * # 0x01 easy\_web
 
+  关键词：文件读取，源码泄露，md5强碰撞，反斜杠绕过
+
 打开网页发现增加了两个get类型的变量，其中image变量名称怀疑为base64加密后的数据
 
-cmd变量为空，初步猜测为输入点![](/assets/axb1.png)经过两次base64解码后发现为十六进制字符串，翻译后得
+cmd变量为空，初步猜测为输入点![](C:\Gitbook\Import\heart1ess_s_ctf\assets\axb1.png)经过两次base64解码后发现为十六进制字符串，翻译后得
 
-![](/assets/abx2.png)
+![](C:\Gitbook\Import\heart1ess_s_ctf\assets\abx2.png)
 
 更改img变量内容发现左上角图片消失，判断可以采用此方法泄露源代码，此时将index.php按顺序加密后作为image变量输入得到base64加密后的源代码，解密后获得源代码如下
 
@@ -15,7 +17,7 @@ cmd变量为空，初步猜测为输入点![](/assets/axb1.png)经过两次base6
     if (!isset($_GET['img']) || !isset($_GET['cmd'])) 
         header('Refresh:0;url=./index.php?img=TXpVek5UTTFNbVUzTURabE5qYz0&cmd=');
     $file = hex2bin(base64_decode(base64_decode($_GET['img'])));
-
+    
     $file = preg_replace("/[^a-zA-Z0-9.]+/", "", $file);
     if (preg_match("/flag/i", $file)) {
         echo '<img src ="./ctf3.jpeg">';
@@ -37,7 +39,7 @@ cmd变量为空，初步猜测为输入点![](/assets/axb1.png)经过两次base6
             echo ("md5 is funny ~");
         }
     }
-
+    
     ?>
     <html>
     <style>
@@ -61,7 +63,7 @@ a=%4d%c9%68%ff%0e%e3%5c%20%95%72%d4%77%7b%72%15%87%d3%6f%a7%b2%1b%dc%56%b7%4a%3d
 b=%4d%c9%68%ff%0e%e3%5c%20%95%72%d4%77%7b%72%15%87%d3%6f%a7%b2%1b%dc%56%b7%4a%3d%c0%78%3e%7b%95%18%af%bf%a2%02%a8%28%4b%f3%6e%8e%4b%55%b3%5f%42%75%93%d8%49%67%6d%a0%d1%d5%5d%83%60%fb%5f%07%fe%a2
 ```
 
-a与b在url解码后进行md5加密得到相同的结果，如下图所示：![](/assets/axb3.png)而后通过反斜杠`\`规避正则表达式过滤，最终获取根目录下的flag
+a与b在url解码后进行md5加密得到相同的结果，如下图所示：![](C:\Gitbook\Import\heart1ess_s_ctf\assets\axb3.png)而后通过反斜杠`\`规避正则表达式过滤，最终获取根目录下的flag
 
 Payload：
 

