@@ -11,24 +11,24 @@ Stub的基本结构：`...<?php ...;__HALT_COMPILER()?>`...为用户自行填充
 ### 序列化信息
 Phar文件中被压缩的一部分信息，其中data的方式会以序列化的形式储存。（漏洞利用的关键点）
 
-![img](C:\Gitbook\Import\heart1ess_s_ctf\library\assets\phar1.png)
+![img](https://raw.githubusercontent.com/Heart-1ess/Heart_1ess-s-CTF-Note/master/library/assets/phar1.png)
 
 ### 文件内容
 被压缩的文件内容，与漏洞利用目前而言并无太大关系
 
 ### 签名格式
 
-![img](C:\Gitbook\Import\heart1ess_s_ctf\library\assets\phar2.png)
+![img](https://raw.githubusercontent.com/Heart-1ess/Heart_1ess-s-CTF-Note/master/library/assets/phar2.png)
 
 在notepad++中观察phar的反序列化信息
 
 * 文件头：
 
-![image-20210705182837122](C:\Gitbook\Import\heart1ess_s_ctf\library\assets\phar3.png)
+![image-20210705182837122](https://raw.githubusercontent.com/Heart-1ess/Heart_1ess-s-CTF-Note/master/library/assets/phar3.png)
 
 * 文件序列化段：
 
-![image-20210705182912899](C:\Gitbook\Import\heart1ess_s_ctf\library\assets\phar4.png)
+![image-20210705182912899](https://raw.githubusercontent.com/Heart-1ess/Heart_1ess-s-CTF-Note/master/library/assets/phar4.png)
 
 ## phar反序列化漏洞
 
