@@ -27,11 +27,11 @@ $class->VHUD0D($b);
 
 很显然在这种条件下人工去寻找并没有自动化分析来的迅速，那么应该如何进行自动化分析则是一个非常重要的问题。首先就是AST抽象语法分析树。
 
-![AST图示](C:\Gitbook\Import\heart1ess_s_ctf\blogs\assets\ast1.png)
+![AST图示](https://raw.githubusercontent.com/Heart-1ess/Heart_1ess-s-CTF-Note/master/blogs/assets/ast1.png)
 
 或者如下图所示：
 
-![AST图示2](C:\Gitbook\Import\heart1ess_s_ctf\blogs\assets\ast2.png)
+![AST图示2](https://raw.githubusercontent.com/Heart-1ess/Heart_1ess-s-CTF-Note/master/blogs/assets/ast2.png)
 
 该种分析方法可以使得语法中各种元素被提取出来，从而方便我们对指定元素进行分析，如本题目中的类名以及类中包含的方法名。在php语言中采用`php-parser`构建抽象语法分析树。
 
@@ -39,6 +39,6 @@ $class->VHUD0D($b);
 
 简而言之，污点分析采用自顶向下的原则，对于每棵语法树的枝叶和子结点进行分析，从可能被污染的原数据开始，递归地向下分析，若在遭遇有效消毒后则污点向下的子结点被消毒，不再被污点感染；而在未经历安全处理或经历无效安全处理后则污点向下的子结点继续被污染，当分析至存在敏感函数执行的语句时（如`eval`等）检查对应子结点的被污染程度，若被污染则证明存在漏洞。
 
-![污点分析](C:\Gitbook\Import\heart1ess_s_ctf\blogs\assets\ast3.png)
+![污点分析](https://raw.githubusercontent.com/Heart-1ess/Heart_1ess-s-CTF-Note/master/blogs/assets/ast3.png)
 
 因而对于此题而言，污点分析和ast抽象语法树的构建至关重要。对于以后的代码量较大的程序而言，该种自动化查找漏洞策略可大幅减少应用于漏洞挖掘方向上的人力与物力，使得漏洞挖掘更加自动化。
