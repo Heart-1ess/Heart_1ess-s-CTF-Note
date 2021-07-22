@@ -77,7 +77,7 @@ file://suctf.cＣ
 file://suctf.cＣ/usr/local/nginx/conf/nginx.conf
 ```
 
-![image-20210324192201511](C:\Gitbook\Import\heart1ess_s_ctf\assets\su1.png)
+![su1](https://raw.githubusercontent.com/Heart-1ess/Heart_1ess-s-CTF-Note/master/assets/su1.png)
 
 最终payload：
 
