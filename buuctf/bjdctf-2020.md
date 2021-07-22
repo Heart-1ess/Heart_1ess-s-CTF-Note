@@ -28,15 +28,15 @@
 
 首先拿到网页发现有个flag，进去发现能显示我们的ip地址，进入hint界面在注释中发现重点在于ip，于是我们尝试采用XFF伪造ip
 
-![image-20210202115543302](C:\Gitbook\Import\heart1ess_s_ctf\assets\bjd5.png)
+![bjd5](https://raw.githubusercontent.com/Heart-1ess/Heart_1ess-s-CTF-Note/master/assets/bjd5.png)
 
 完成伪造后发现由于php代码在html解析下无法执行，因而转为尝试SSTI（实战中已经懵逼了，看wp才知道是SSTI，果然还是太菜了TAT）
 
-![image-20210202115939427](C:\Gitbook\Import\heart1ess_s_ctf\assets\bjd6.png)
+![bjd6](https://raw.githubusercontent.com/Heart-1ess/Heart_1ess-s-CTF-Note/master/assets/bjd6.png)
 
 SSTI可行，进而拿到flag
 
-![image-20210202120045487](C:\Gitbook\Import\heart1ess_s_ctf\assets\bjd7.png)
+![bjd7](https://raw.githubusercontent.com/Heart-1ess/Heart_1ess-s-CTF-Note/master/assets/bjd7.png)
 
 经验教训：对于每一个输出点要尽可能尝试所有方法
 
@@ -46,11 +46,11 @@ SSTI可行，进而拿到flag
 
 进入网页后发现文件包含，但对于flag有过滤
 
-![image-20210202121225470](C:\Gitbook\Import\heart1ess_s_ctf\assets\bjd8.png)
+![bjd8](Chttps://raw.githubusercontent.com/Heart-1ess/Heart_1ess-s-CTF-Note/master/assets/bjd8.png)
 
 text传值采用`php://input`的伪协议，而file按照提示中的输入next.php
 
-![image-20210202122944761](C:\Gitbook\Import\heart1ess_s_ctf\assets\bjd9.png)
+![bjd9](https://raw.githubusercontent.com/Heart-1ess/Heart_1ess-s-CTF-Note/master/assets/bjd9.png)
 
 成功进入next.php，下面通过`php://filter`伪协议尝试获取next.php的源代码，经过base64解码后得到：
 
