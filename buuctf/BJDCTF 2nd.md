@@ -58,6 +58,7 @@
 
   最终在cookie中获取flag
 
-  ![image-20210326135630996](C:\Gitbook\Import\heart1ess_s_ctf\assets\bjd2-1.png)
+  ![bjd2-1](https://raw.githubusercontent.com/Heart-1ess/Heart_1ess-s-CTF-Note/master/assets/bjd2-1.png)
+  
 
   
