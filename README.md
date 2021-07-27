@@ -1,5 +1,3 @@
-# 
-
 # Heart\_1ess's CTF Note
 
 一个菜鸡的CTF笔记
